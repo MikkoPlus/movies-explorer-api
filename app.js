@@ -10,12 +10,12 @@ const errorHandler = require('./middlewares/error');
 const { errorLogger, requestLogger } = require('./middlewares/logger');
 const router = require('./routes/index');
 const limiter = require('./middlewares/rateLimiter');
-const { baseSiteUrl } = require('./utils/constants');
+const { baseSiteUrl, devDataBaseUrl } = require('./utils/constants');
 
-const { PORT, DATA_BASE_URL } = process.env;
+const { NODE_ENV, PORT, DATA_BASE_URL } = process.env;
 const app = express();
 
-mongoose.connect(DATA_BASE_URL);
+mongoose.connect(NODE_ENV === 'production' ? DATA_BASE_URL : devDataBaseUrl);
 app.use(express.json());
 app.use(helmet());
 app.use(limiter);
