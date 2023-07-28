@@ -9,17 +9,21 @@ const {
   userAuthorizationValidation,
 } = require('../middlewares/celebrateValidation');
 const auth = require('../middlewares/auth');
+const {
+  unknownMethodOrUrlErrorMessage,
+  exitMessage,
+} = require('../utils/constants');
 
 router.post('/signup', userRegistrationValidation, createUser);
 router.post('/signin', userAuthorizationValidation, login);
 router.use(auth);
 router.get('/signout', (req, res) => {
-  res.clearCookie('jwt').send({ message: 'Выход' });
+  res.clearCookie('jwt').send(exitMessage);
 });
 router.use('/users', userRoutes);
 router.use('/movies', movieRoutes);
 router.use('/*', (req, res, next) => {
-  next(new NotFoundError('Такого метода или URL не существует'));
+  next(new NotFoundError(unknownMethodOrUrlErrorMessage));
 });
 
 module.exports = router;

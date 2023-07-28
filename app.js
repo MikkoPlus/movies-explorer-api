@@ -9,6 +9,8 @@ const { errors } = require('celebrate');
 const errorHandler = require('./middlewares/error');
 const { errorLogger, requestLogger } = require('./middlewares/logger');
 const router = require('./routes/index');
+const limiter = require('./middlewares/rateLimiter');
+const { baseSiteUrl } = require('./utils/constants');
 
 const { PORT, DATA_BASE_URL } = process.env;
 const app = express();
@@ -16,9 +18,8 @@ const app = express();
 mongoose.connect(DATA_BASE_URL);
 app.use(express.json());
 app.use(helmet());
-app.use(
-  cors({ credentials: true, origin: 'https://movie-hunter.nomoreparties.sbs' }),
-);
+app.use(limiter);
+app.use(cors({ credentials: true, origin: baseSiteUrl }));
 app.options('*', cors());
 app.use(cookkieParser());
 app.use(requestLogger);

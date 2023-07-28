@@ -9,6 +9,8 @@ const {
   NotFoundError,
 } = require('../errors/errors');
 
+const { userNotFoundByIdMessage } = require('../utils/constants');
+
 const createUser = (req, res, next) => {
   bcrypt
     .hash(String(req.body.password), 10)
@@ -73,7 +75,7 @@ const updateUserProfile = (req, res, next) => {
     { name: body.name, email: body.email },
     { new: true, runValidators: true },
   )
-    .orFail(() => next(new NotFoundError('Пользователь с таким _id не найден')))
+    .orFail(() => next(new NotFoundError(userNotFoundByIdMessage)))
     .then((user) => {
       res.send(user);
     })

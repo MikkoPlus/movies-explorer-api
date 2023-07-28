@@ -4,6 +4,10 @@ const {
   NotFoundError,
   ForbiddenError,
 } = require('../errors/errors');
+const {
+  filmIsDeleteMessage,
+  filmNotFoundByIdMessage,
+} = require('../utils/constants');
 
 const findUserMovies = (req, res, next) => {
   Movie.find({ owner: req.user._id })
@@ -29,13 +33,13 @@ const deleteMovie = async (req, res, next) => {
     if (movie) {
       if (String(movie.owner) === req.user._id) {
         Movie.deleteOne({ _id: req.params.movieId })
-          .then(() => res.send({ message: 'Фильм удалён' }))
+          .then(() => res.send(filmIsDeleteMessage))
           .catch(next);
       } else {
         next(new ForbiddenError());
       }
     } else {
-      next(new NotFoundError('Фильм с переданным _id не найден'));
+      next(new NotFoundError(filmNotFoundByIdMessage));
     }
   } catch (err) {
     next(err);
