@@ -5,6 +5,11 @@ const exitMessage = { message: 'Выход' };
 const filmIsDeleteMessage = { message: 'Фильм удалён' };
 const filmNotFoundByIdMessage = 'Фильм с переданным _id не найден';
 const userNotFoundByIdMessage = 'Пользователь с таким _id не найден';
+const emailIsExistsErrorMessage = 'Пользователь с такой почтой уже существует';
+const invalidDataErrorMessage = 'Переданные данные не валидны';
+const unauthorizedErrorMessage = 'Ошибка авторизации';
+const forbidenErrorMessage = 'Ошибка прав доступа';
+const defaultErrorMessage = 'Внутренняя ошибка сервера';
 
 module.exports = {
   baseSiteUrl,
@@ -14,4 +19,9 @@ module.exports = {
   filmIsDeleteMessage,
   filmNotFoundByIdMessage,
   userNotFoundByIdMessage,
+  emailIsExistsErrorMessage,
+  invalidDataErrorMessage,
+  unauthorizedErrorMessage,
+  forbidenErrorMessage,
+  defaultErrorMessage,
 };

@@ -1,7 +1,9 @@
+const { emailIsExistsErrorMessage } = require('../utils/constants');
+
 class EmailIsExistsError extends Error {
   constructor(err) {
     super(err);
-    this.message = 'Пользователь с такой почтой уже существует';
+    this.message = emailIsExistsErrorMessage;
     this.statusCode = 409;
   }
 }

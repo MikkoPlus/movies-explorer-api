@@ -1,7 +1,9 @@
+const { invalidDataErrorMessage } = require('../utils/constants');
+
 class InvalidDataError extends Error {
   constructor(err) {
     super(err);
-    this.message = 'Переданные данные не валидны';
+    this.message = invalidDataErrorMessage;
     this.statusCode = 400;
   }
 }
