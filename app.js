@@ -10,7 +10,9 @@ const errorHandler = require('./middlewares/error');
 const { errorLogger, requestLogger } = require('./middlewares/logger');
 const router = require('./routes/index');
 const limiter = require('./middlewares/rateLimiter');
-const { baseSiteUrl, devDataBaseUrl } = require('./utils/constants');
+const { baseUrls } = require('./utils/constants');
+
+const { devDataBaseUrl, baseSiteUrl } = baseUrls;
 
 const { NODE_ENV, PORT, DATA_BASE_URL } = process.env;
 const app = express();

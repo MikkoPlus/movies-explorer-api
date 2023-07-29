@@ -1,9 +1,10 @@
-const { emailIsExistsErrorMessage } = require('../utils/constants');
+const { errorMessages } = require('../utils/constants');
 
+const { emailIsExistsMsg } = errorMessages;
 class EmailIsExistsError extends Error {
   constructor(err) {
     super(err);
-    this.message = emailIsExistsErrorMessage;
+    this.message = emailIsExistsMsg;
     this.statusCode = 409;
   }
 }
