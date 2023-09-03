@@ -12,6 +12,7 @@ const errorMessages = {
   filmNotFoundByIdMsg: 'Фильм с переданным _id не найден',
   userNotFoundByIdMsg: 'Пользователь с таким _id не найден',
   emailIsExistsMsg: 'Пользователь с такой почтой уже существует',
+  filmIsExistsMsg: 'Фильм уже добавлен',
   invalidDataMsg: 'Переданные данные не валидны',
   unauthorizedMsg: 'Ошибка авторизации',
   forbidenMsg: 'Ошибка прав доступа',

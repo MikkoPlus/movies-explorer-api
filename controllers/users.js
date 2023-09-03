@@ -51,10 +51,7 @@ const login = (req, res, next) => {
             NODE_ENV === 'production' ? JWT_SECRET_KEY : 'dev-secret-key',
             { expiresIn: '7d' },
           );
-          res.cookie('jwt', jwt, {
-            httpOnly: true,
-            sameSite: true,
-          });
+          res.cookie('jwt', jwt);
           res.send(user.toJSON());
         } else {
           next(new UnauthorizedError());

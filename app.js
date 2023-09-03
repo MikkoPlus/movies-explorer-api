@@ -22,7 +22,8 @@ app.use(express.json());
 app.use(helmet());
 app.use(limiter);
 app.use(cors({ credentials: true, origin: baseSiteUrl }));
-app.options('*', cors());
+
+app.options('https://movie-hunter.nomoreparties.sbs/', cors());
 app.use(cookkieParser());
 app.use(requestLogger);
 app.use(router);
