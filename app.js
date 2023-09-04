@@ -21,7 +21,9 @@ mongoose.connect(NODE_ENV === 'production' ? DATA_BASE_URL : devDataBaseUrl);
 app.use(express.json());
 app.use(helmet());
 app.use(limiter);
-app.use(cors({ credentials: true, origin: baseSiteUrl }));
+app.use(
+  cors({ credentials: true, origin: 'https://movie-hunter.nomoreparties.sbs' }),
+);
 
 app.options(baseSiteUrl, cors());
 app.use(cookkieParser());
