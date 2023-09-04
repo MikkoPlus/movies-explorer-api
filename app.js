@@ -12,7 +12,7 @@ const router = require('./routes/index');
 const limiter = require('./middlewares/rateLimiter');
 const { baseUrls } = require('./utils/constants');
 
-const { devDataBaseUrl, baseSiteUrl } = baseUrls;
+const { devDataBaseUrl } = baseUrls;
 
 const { NODE_ENV, PORT, DATA_BASE_URL } = process.env;
 const app = express();
@@ -25,7 +25,7 @@ app.use(
   cors({ credentials: true, origin: 'https://movie-hunter.nomoreparties.sbs' }),
 );
 
-app.options(baseSiteUrl, cors());
+app.options('https://movie-hunter.nomoreparties.sbs', cors());
 app.use(cookkieParser());
 app.use(requestLogger);
 app.use(router);
