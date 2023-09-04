@@ -24,15 +24,6 @@ app.use(limiter);
 app.use(
   cors({ credentials: true, origin: 'https://movie-hunter.nomoreparties.sbs' }),
 );
-app.use((req, res, next) => {
-  res.header(
-    `Access-Control-Allow-Origin`,
-    `https://movie-hunter.nomoreparties.sbs`,
-  );
-  res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
-  res.header(`Access-Control-Allow-Headers`, `Content-Type`);
-  next();
-});
 app.options('https://movie-hunter.nomoreparties.sbs', cors());
 app.use(cookkieParser());
 app.use(requestLogger);
